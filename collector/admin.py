@@ -1,3 +1,11 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Category, Event
+
+
+class EventAdmin(admin.ModelAdmin):
+    list_display = ("name", "category", "session_id", "data", "timestamp", "created_at")
+
+
+admin.site.register(Category)
+admin.site.register(Event, EventAdmin)
