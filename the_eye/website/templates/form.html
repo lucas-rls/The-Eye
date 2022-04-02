@@ -1,0 +1,18 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block script %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}" />
+<!-- <script type="text/javascript" src="{% static 'js/form.js' %}"></script> -->
+{% endblock script %}
+
+{% block content %}
+<div class="content-container">
+    <form method="POST" name="image_form">
+        {% csrf_token %}
+        <input id="name" name="name" placeholder="Name">
+        <input id="email" name="email" placeholder="Email">
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,22 @@
+.container{
+    width: 990px;
+    height: 900px;
+    margin: auto;
+}
+
+.menu{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+
+.menu ul li{
+    float: left;
+    text-decoration: none;
+    list-style: none;
+    margin: 0px 10px;
+}

@@ -1,0 +1,15 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block script %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" />
+{% endblock script %}
+
+{% block content %}
+<div class="content-container">
+    <form method="POST" name="image_form">
+        {% csrf_token %}
+        <img onclick="imageClick()" src="{% static 'images/banner.jpg' %}">
+    </form>
+</div>
+{% endblock content %}
