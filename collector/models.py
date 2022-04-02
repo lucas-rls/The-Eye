@@ -22,3 +22,9 @@ class Event(models.Model):
     data = models.JSONField()
     timestamp = models.DateTimeField()
     created_at = models.DateTimeField(auto_now=True)
+
+
+class EventError(models.Model):
+    message = models.CharField(max_length=300)
+    data = models.JSONField()
+    created_at = models.DateTimeField(auto_now=True)

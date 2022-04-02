@@ -1,5 +1,6 @@
+from email import message
 from celery import shared_task
-from .models import Category, Event
+from .models import Category, Event, EventError
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
 from http import HTTPStatus
@@ -13,9 +14,13 @@ def save_event(request):
     try:
         category = Category.objects.get(name=category_name)
     except ObjectDoesNotExist:
-        return {"msg": "Something went wrong"}
-    except:
-        return {"msg": "Something went wrong"}
+        error = EventError(message="Category not found", data=request)
+        error.save()
+        return False
+    except Exception as e:
+        error = EventError(message=str(e), data=request)
+        error.save()
+        return False
 
     try:
         event = Event(
@@ -28,6 +33,12 @@ def save_event(request):
 
         event.save()
     except Exception as e:
-        return {"msg": "Something went wrong"}
+        try:
+            error = EventError(message=str(e), data=request)
+            error.save()
+        except Exception as e:
+            print(e)
 
-    time.sleep(20)
+        return False
+
+    return True
