@@ -47,3 +47,15 @@ docker exec -it [CONTAINER_ID] python manage.py test
 - <b>Event</b> - The Event model, with all the params received in the POST endpoint above in addition with a created_at column to store de timestamp at the moment it was stored.
 - <b>EventError</b> - The EventError model is used to store the events that couldn't be stored because of some error. This should help to keep track of possibles frontend errors or some violations.
 
+# Website
+I created two simple templates to simulate the real event generator action. You can access on "http://localhost:8000/website/". The events that can be generated are:
+- Page View - Triggered when a page is accessed.
+- - "category": "page interaction"
+- - "name": "pageview"
+- Image Click - Triggered when the home image is clicked.
+- - "category": "page interaction"
+- - "name": "banner image click"
+- Form Submit - Triggered when the form is submitted.
+- - "category": "form interaction"
+- - "name": "submit"
+- - "data" key has carries the form information
